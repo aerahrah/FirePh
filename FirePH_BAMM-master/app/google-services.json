@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "593813057003",
+    "project_id": "budgetfireph",
+    "storage_bucket": "budgetfireph.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593813057003:android:7add232938b325cb7c7dae",
+        "android_client_info": {
+          "package_name": "com.example.fireph"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593813057003-7ojulofsj2nh3e22609dmd1f8sth2e4b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAcbyyKLvIDj9IRzQwg7TmocaHgazSwWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593813057003-7ojulofsj2nh3e22609dmd1f8sth2e4b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

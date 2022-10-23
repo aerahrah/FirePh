@@ -11,9 +11,9 @@ import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.coroutines.Dispatchers.Main
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -41,7 +41,7 @@ class InsertionActivity : AppCompatActivity() {
         btnSaveData = findViewById(R.id.btnSave)
         etCategory = findViewById(R.id.etCategory)
         etType = findViewById(R.id.etRadioGroup)
-        etTest = findViewById(R.id.etTest)
+//        etTest = findViewById(R.id.etTest)
 
         val calendar = Calendar.getInstance();
         val myMonth = calendar.get(Calendar.MONTH);
@@ -70,10 +70,16 @@ class InsertionActivity : AppCompatActivity() {
             }
         }
 
-        etTest.setOnClickListener {
-            val intent = Intent(this, InsertionActivity::class.java)
-            startActivity(intent)
-        }
+        autoCompleteTxt.onItemClickListener =
+            OnItemClickListener { parent, view, position, id ->
+                val item = parent.getItemAtPosition(position).toString()
+                Toast.makeText(applicationContext, "Item: $item", Toast.LENGTH_SHORT).show()
+            }
+
+//        etTest.setOnClickListener {
+//            val intent = Intent(this, InsertionActivity::class.java)
+//            startActivity(intent)
+//        }
 
         btnSaveData.setOnClickListener {
             saveData()
@@ -96,19 +102,20 @@ class InsertionActivity : AppCompatActivity() {
     }
 
     private fun saveData() {
-        val fireDate = etDate.text.toString()
 
         dbRef = FirebaseDatabase.getInstance("https://budgetfireph-default-rtdb.firebaseio.com/").getReference("Users")
 
+        val fireDate = etDate.text.toString()
         val fireAmount = etAmount.text.toString()
         val fireType = etType.checkedRadioButtonId.toString()
         var fireCategory = ""
+        val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
         autoCompleteTxt.onItemClickListener =
             OnItemClickListener { parent, view, position, id ->
                 fireCategory = parent.getItemAtPosition(position).toString()
+                System.out.print(fireCategory)
             }
-
         if (fireDate.isEmpty()) {
             etDate.error = "Please enter date"
         }
@@ -123,11 +130,10 @@ class InsertionActivity : AppCompatActivity() {
             Toast.makeText(this, "Please select Category", Toast.LENGTH_SHORT).show();
         }
 
-        val empId = dbRef.push().key!!
-
-            val inputData  = inputDataModel(empId,fireType,fireDate,fireAmount,fireCategory)
-
-            dbRef.child(empId).setValue(inputData).addOnCompleteListener {task ->
+        val moneyId = dbRef.push().key!!
+        val inputData  = inputDataModel(moneyId,fireType,fireDate,fireAmount,fireCategory)
+        if(fireType == "1"){
+            dbRef.child(uid).child("IncomeHistory").push().setValue(inputData).addOnCompleteListener {task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
                     val intent = Intent(this, MainActivity::class.java)
@@ -135,6 +141,19 @@ class InsertionActivity : AppCompatActivity() {
                 }}.addOnFailureListener { err ->
                 Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
             }
+        }
+        else if(fireType == "2"){
+            dbRef.child(uid).child("ExpensesHistory").push().setValue(inputData).addOnCompleteListener {task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }}.addOnFailureListener { err ->
+                Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
+            }
+        }
+
+
 
     }
 

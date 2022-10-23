@@ -21,7 +21,7 @@ class categoryAdapter(private val userList : ArrayList<Categories>) : RecyclerVi
 
         val currentitem = userList[position]
 
-        holder.category.text = currentitem.Category
+//        holder.category.text = currentitem.Category
 
     }
 
@@ -33,7 +33,7 @@ class categoryAdapter(private val userList : ArrayList<Categories>) : RecyclerVi
 
     class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
-        val category : TextView = itemView.findViewById(R.id.categoryList)
+//        val category : TextView = itemView.findViewById(R.id.categoryList)
 
     }
 

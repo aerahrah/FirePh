@@ -51,11 +51,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        val user: FirebaseUser? = mAuth.getCurrentUser()
-//        if (user == null) {
-//            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-//        }
-//    }
+    override fun onStart() {
+        super.onStart()
+        val user: FirebaseUser? = mAuth.getCurrentUser()
+
+        if (user == null) {
+            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+        }
+    }
 }

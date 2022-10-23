@@ -16,12 +16,12 @@ import com.google.firebase.database.FirebaseDatabase
 
 
 class RegisterActivity : AppCompatActivity() {
-    var etRegEmail: TextInputEditText? = null
-    var etRegPassword: TextInputEditText? = null
+    private lateinit var etRegEmail: TextInputEditText
+    private lateinit var etRegPassword: TextInputEditText
     private lateinit var tvLoginHere: TextView
     private lateinit var btnRegister: Button
     private lateinit var dbRef: DatabaseReference
-    var mAuth: FirebaseAuth? = null
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +44,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun createUser() {
         dbRef = FirebaseDatabase.getInstance("https://budgetfireph-default-rtdb.firebaseio.com/")
-                .getReference("Users")
+            .getReference("Users")
         val email = etRegEmail!!.text.toString()
         val password = etRegPassword!!.text.toString()
         if (TextUtils.isEmpty(email)) {
@@ -62,7 +62,7 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
-                    val empId = dbRef.push().key!!
+                    val empId = FirebaseAuth.getInstance().currentUser!!.uid
                     val inputData  = inputUserModel(empId,email,password)
 
                     dbRef.child(empId).child("UserInfo").setValue(inputData).addOnCompleteListener {task ->
@@ -74,11 +74,11 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
                     }
                 } else {
-//                    Toast.makeText(
-//                        this@RegisterActivity,
-//                        "Registration Error: " + task.exception.getMessage(),
-//                        Toast.LENGTH_SHORT
-//                    ).show()
+                    Toast.makeText(
+                        this@RegisterActivity,
+                        "Registration Error: ",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }

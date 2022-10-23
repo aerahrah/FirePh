@@ -91,9 +91,6 @@
                 android:textColor="@color/teal_700"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
-
         </LinearLayout>
-
     </LinearLayout>
-
 </LinearLayout>

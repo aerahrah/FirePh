@@ -132,7 +132,9 @@ class InsertionActivity : AppCompatActivity() {
 
         val moneyId = dbRef.push().key!!
         val inputData  = inputDataModel(moneyId,fireType,fireDate,fireAmount,fireCategory)
+        val inputID = inputIdModel(moneyId)
         if(fireType == "1"){
+//            dbRef.child(uid).child("ID").push().setValue(inputID)
             dbRef.child(uid).child("IncomeHistory").push().setValue(inputData).addOnCompleteListener {task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
@@ -141,8 +143,10 @@ class InsertionActivity : AppCompatActivity() {
                 }}.addOnFailureListener { err ->
                 Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
             }
+
         }
         else if(fireType == "2"){
+//            dbRef.child(uid).child("ID").push().setValue(inputID)
             dbRef.child(uid).child("ExpensesHistory").push().setValue(inputData).addOnCompleteListener {task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()

@@ -2,12 +2,22 @@ package com.example.fireph
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.anychart.AnyChart
+import com.anychart.AnyChartView
+import com.anychart.chart.common.dataentry.DataEntry
+import com.anychart.chart.common.dataentry.ValueDataEntry
+import com.anychart.charts.Pie
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class categoryListAdapter : AppCompatActivity() {
+
+    private var chart: AnyChartView? = null
+
+    private val salary = listOf(200,300,400,600)
+    private val month = listOf("January","February","March","April")
 
     fun append(arr: Array<String>, element: String): Array<String> {
         val list: MutableList<String> = arr.toMutableList()
@@ -23,6 +33,12 @@ class categoryListAdapter : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories)
 
+        chart = findViewById(R.id.pieChart)
+
+        configChartView()
+
+        setContentView(R.layout.activity_categories)
+
 //        userRecyclerview = findViewById(R.id.categoryList)
 //        userRecyclerview.layoutManager = LinearLayoutManager(this)
 //        userRecyclerview.setHasFixedSize(true)
@@ -32,11 +48,28 @@ class categoryListAdapter : AppCompatActivity() {
 
     }
 
+
+
+    private fun configChartView() {
+        val pie : Pie = AnyChart.pie()
+
+        val dataPieChart: MutableList<DataEntry> = mutableListOf()
+
+        for (index in salary.indices){
+            dataPieChart.add(ValueDataEntry(month.elementAt(index),salary.elementAt(index)))
+        }
+
+        pie.data(dataPieChart)
+        pie.title("Salaries Overview")
+        chart!!.setChart(pie)
+
+    }
     private fun getUserData() {
             var idString = arrayOf<String>()
+
 //        dbref = FirebaseDatabase.getInstance().getReference("Employees")
-        val uid = FirebaseAuth.getInstance().currentUser!!.uid
-        FirebaseDatabase.getInstance().getReference("Users").child(uid).child("ExpensesHistory")
+            val uid = FirebaseAuth.getInstance().currentUser!!.uid
+            FirebaseDatabase.getInstance().getReference("Users").child(uid).child("ExpensesHistory")
             .addListenerForSingleValueEvent(object : ValueEventListener {
 //                fun onChildAdded(snapshot: DataSnapshot?, p1: String?) {
 //                    val children = snapshot!!.children

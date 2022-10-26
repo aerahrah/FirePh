@@ -11,7 +11,7 @@ class categoryAdapter(private val userList : ArrayList<Categories>) : RecyclerVi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.layout_category,
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.actity_list,
             parent,false)
         return MyViewHolder(itemView)
 
@@ -21,8 +21,14 @@ class categoryAdapter(private val userList : ArrayList<Categories>) : RecyclerVi
 
         val currentitem = userList[position]
 
+        holder.empId.text = currentitem.empId
+        holder.fireAmount.text = currentitem.fireAmount
+        holder.fireCategory.text = currentitem.fireCategory
+        holder.fireDate.text = currentitem.fireDate
+        holder.fireType.text = currentitem.fireType
 //        holder.category.text = currentitem.Category
-
+//        System.out.println(holder.empId.text)
+        System.out.println(holder.fireAmount.text)
     }
 
     override fun getItemCount(): Int {
@@ -33,7 +39,13 @@ class categoryAdapter(private val userList : ArrayList<Categories>) : RecyclerVi
 
     class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
+        val empId : TextView = itemView.findViewById(R.id.tvempId)
+        val fireAmount : TextView = itemView.findViewById(R.id.tvfireAmount)
+        val fireCategory : TextView = itemView.findViewById(R.id.tvfireCategory)
+        val fireDate : TextView = itemView.findViewById(R.id.tvfireDate)
+        val fireType : TextView = itemView.findViewById(R.id.tvfireType)
 //        val category : TextView = itemView.findViewById(R.id.categoryList)
+
 
     }
 

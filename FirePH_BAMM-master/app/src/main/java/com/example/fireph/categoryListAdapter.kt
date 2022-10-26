@@ -14,10 +14,6 @@ import com.google.firebase.database.*
 
 class categoryListAdapter : AppCompatActivity() {
 
-    private var chart: AnyChartView? = null
-
-    private val salary = listOf(200,300,400,600)
-    private val month = listOf("January","February","March","April")
 
     fun append(arr: Array<String>, element: String): Array<String> {
         val list: MutableList<String> = arr.toMutableList()
@@ -26,44 +22,42 @@ class categoryListAdapter : AppCompatActivity() {
         return list.toTypedArray()
     }
     private lateinit var dbref : DatabaseReference
-//    private lateinit var userRecyclerview : RecyclerView
-//    private lateinit var userArrayList : ArrayList<Categories>
+    private lateinit var userRecyclerview : RecyclerView
+    private lateinit var userArrayList : ArrayList<Categories>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories)
 
-        chart = findViewById(R.id.pieChart)
-
-        configChartView()
-
-        setContentView(R.layout.activity_categories)
-
-//        userRecyclerview = findViewById(R.id.categoryList)
-//        userRecyclerview.layoutManager = LinearLayoutManager(this)
-//        userRecyclerview.setHasFixedSize(true)
+//        chart = findViewById(R.id.pieChart)
 //
-//        userArrayList = arrayListOf<Categories>()
+//        configChartView()
+
+        userRecyclerview = findViewById(R.id.categoryList)
+        userRecyclerview.layoutManager = LinearLayoutManager(this)
+        userRecyclerview.setHasFixedSize(true)
+
+        userArrayList = arrayListOf<Categories>()
         getUserData()
 
     }
 
 
 
-    private fun configChartView() {
-        val pie : Pie = AnyChart.pie()
-
-        val dataPieChart: MutableList<DataEntry> = mutableListOf()
-
-        for (index in salary.indices){
-            dataPieChart.add(ValueDataEntry(month.elementAt(index),salary.elementAt(index)))
-        }
-
-        pie.data(dataPieChart)
-        pie.title("Salaries Overview")
-        chart!!.setChart(pie)
-
-    }
+//    private fun configChartView() {
+//        val pie : Pie = AnyChart.pie()
+//
+//        val dataPieChart: MutableList<DataEntry> = mutableListOf()
+//
+//        for (index in salary.indices){
+//            dataPieChart.add(ValueDataEntry(month.elementAt(index),salary.elementAt(index)))
+//        }
+//
+//        pie.data(dataPieChart)
+//        pie.title("Salaries Overview")
+//        chart!!.setChart(pie)
+//
+//    }
     private fun getUserData() {
             var idString = arrayOf<String>()
 
@@ -79,21 +73,42 @@ class categoryListAdapter : AppCompatActivity() {
 //                }
 
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val children = snapshot!!.children
-                    children.forEach {
-                        var retrievedID = it.child("empId").value!!!!
-                        val retrievedAmount = it.child("fireAmount").value!!!!
-                        val retrievedCategory = it.child("fireCategory").value!!!!
-                        val retrievedDate = it.child("fireDate").value!!!!
-                        val retrievedType = it.child("fireType").value!!!!
+
+                    if (snapshot.exists()){
+                        System.out.println("Exist")
+                        for (userSnapshot in snapshot.children){
+
+
+                            val user = userSnapshot.getValue(Categories::class.java)
+                            System.out.println(user)
+                            System.out.println(user!!)
+
+                            userArrayList.add(user!!)
+
+                        }
+
+                        userRecyclerview.adapter = categoryAdapter(userArrayList)
+
+
+                    }
+
+                }
+//                    val children = snapshot!!.children
+//                    children.forEach {
+//                        var retrievedID = it.child("empId").value!!!!
+//                        val retrievedAmount = it.child("fireAmount").value!!!!
+//                        val retrievedCategory = it.child("fireCategory").value!!!!
+//                        val retrievedDate = it.child("fireDate").value!!!!
+//                        val retrievedType = it.child("fireType").value!!!!
 //                        append(idString, retrievedID.toString())
 
-                        System.out.println(retrievedID.toString())
-                        System.out.println(retrievedAmount.toString())
-                        System.out.println(retrievedCategory.toString())
-                        System.out.println(retrievedDate.toString())
-                        System.out.println(retrievedType.toString())
-                        retrievedID = retrievedID.toString()
+//                        userArrayList.add(retrievedID)
+//                        System.out.println(retrievedID.toString())
+//                        System.out.println(retrievedAmount.toString())
+//                        System.out.println(retrievedCategory.toString())
+//                        System.out.println(retrievedDate.toString())
+//                        System.out.println(retrievedType.toString())
+//                        retrievedID = retrievedID.toString()
 //                        System.out.println(idString.size)
 //                        FirebaseDatabase.getInstance().getReference("Users").child(uid).child("ExpensesHistory").child(retrievedID)
 //                            .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -112,9 +127,9 @@ class categoryListAdapter : AppCompatActivity() {
 //                                    throw databaseError.toException()
 //                                }
 //                            })
-                    }
+//                    }
 
-                }
+
                 override fun onCancelled(databaseError: DatabaseError) {
                     throw databaseError.toException()
                 }

@@ -135,7 +135,7 @@ class InsertionActivity : AppCompatActivity() {
         val inputID = inputIdModel(moneyId)
         if(fireType == "1"){
 //            dbRef.child(uid).child("ID").push().setValue(inputID)
-            dbRef.child(uid).child("IncomeHistory").push().setValue(inputData).addOnCompleteListener {task ->
+            dbRef.child(uid).child("IncomeHistory").child(moneyId).setValue(inputData).addOnCompleteListener {task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
                     val intent = Intent(this, MainActivity::class.java)
@@ -147,7 +147,7 @@ class InsertionActivity : AppCompatActivity() {
         }
         else if(fireType == "2"){
 //            dbRef.child(uid).child("ID").push().setValue(inputID)
-            dbRef.child(uid).child("ExpensesHistory").push().setValue(inputData).addOnCompleteListener {task ->
+            dbRef.child(uid).child("ExpensesHistory").child(moneyId).setValue(inputData).addOnCompleteListener {task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
                     val intent = Intent(this, MainActivity::class.java)

@@ -10,63 +10,68 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Firebase Realtime Database App in Kotlin"
-        android:layout_marginTop="80dp"
-        android:textSize="28sp"
+        android:layout_marginTop="76dp"
         android:gravity="center"
+        android:text="Firebase Realtime Database App in Kotlin"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnInsertData"
-        android:layout_width="183dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="75dp"
+        android:layout_width="120dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="80dp"
+        android:background="@android:color/black"
+        android:hapticFeedbackEnabled="true"
         android:text="Insert Expenses"
+        android:theme="@style/Theme.FirePH"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/btnFetchData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="120dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="80dp"
         android:text="Preview Expenses"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.800"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnInsertData" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/btnForecastData"
-        android:layout_width="181dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="104dp"
+        android:layout_width="120dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="36dp"
         android:text="Forecast Expenses"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnInsertData" />
 
     <Button
         android:id="@+id/btnManageData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
+        android:layout_width="120dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="36dp"
         android:text="Manage Expenses"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnInsertData" />
+        app:layout_constraintTop_toBottomOf="@+id/btnFetchData" />
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="412dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="444dp"
         android:text="Logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

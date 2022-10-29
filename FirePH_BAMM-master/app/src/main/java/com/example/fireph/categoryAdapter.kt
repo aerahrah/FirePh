@@ -22,7 +22,7 @@ class categoryAdapter(private val userList : ArrayList<Categories>) : RecyclerVi
 
     inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         private lateinit var dbRef: DatabaseReference
-        val empId: TextView = itemView.findViewById(R.id.tvempId)
+//        val empId: TextView = itemView.findViewById(R.id.tvempId)
         val fireAmount: TextView = itemView.findViewById(R.id.tvfireAmount)
         val fireCategory: TextView = itemView.findViewById(R.id.tvfireCategory)
         val fireDate: TextView = itemView.findViewById(R.id.tvfireDate)
@@ -58,7 +58,7 @@ class categoryAdapter(private val userList : ArrayList<Categories>) : RecyclerVi
 
         val currentitem = userList[position]
         holder.bind(userList[position], position)
-        holder.empId.text = currentitem.empId
+//        holder.empId.text = currentitem.empId
         holder.fireAmount.text = currentitem.fireAmount
         holder.fireCategory.text = currentitem.fireCategory
         holder.fireDate.text = currentitem.fireDate

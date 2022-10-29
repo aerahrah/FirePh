@@ -10,70 +10,89 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="64dp"
         android:gravity="center"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
         android:text="Firebase Realtime Database App in Kotlin"
+        android:textColor="#495057"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnInsertData"
         android:layout_width="120dp"
         android:layout_height="140dp"
-        android:layout_marginTop="80dp"
-        android:background="@android:color/black"
+        android:layout_marginTop="60dp"
+        android:background="#087f5b"
         android:hapticFeedbackEnabled="true"
+        android:paddingStart="2dp"
         android:text="Insert Expenses"
-        android:theme="@style/Theme.FirePH"
+        android:textAlignment="center"
+        android:textColor="#ebfbee"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnFetchData"
         android:layout_width="120dp"
         android:layout_height="140dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
+        android:background="#087f5b"
         android:text="Preview Expenses"
+        android:textColor="#ebfbee"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.800"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnForecastData"
         android:layout_width="120dp"
         android:layout_height="140dp"
         android:layout_marginTop="36dp"
+        android:background="#087f5b"
         android:text="Forecast Expenses"
+        android:textColor="#ebfbee"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnInsertData" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnManageData"
         android:layout_width="120dp"
         android:layout_height="140dp"
         android:layout_marginTop="36dp"
+        android:background="#087f5b"
         android:text="Manage Expenses"
+        android:textColor="#ebfbee"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnFetchData" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginTop="444dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="448dp"
+        android:background="#e03131"
         android:text="Logout"
+        android:textColor="#ffe3e3"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 

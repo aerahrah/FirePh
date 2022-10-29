@@ -61,7 +61,7 @@ class InsertionActivity : AppCompatActivity() {
         val income = arrayOf("Salary", "Bonus", "Allowance", "Benefits"   )
 
         autoCompleteTxt = findViewById(R.id.auto_complete_txt)
-        adapterItems = ArrayAdapter(this, R.layout.activity_categories, items)
+        adapterItems = ArrayAdapter(this, R.layout.list_menu, items)
         autoCompleteTxt.setAdapter(adapterItems)
 
         autoCompleteTxt.setOnFocusChangeListener { v, hasFocus ->
@@ -132,7 +132,6 @@ class InsertionActivity : AppCompatActivity() {
 
         val moneyId = dbRef.push().key!!
         val inputData  = inputDataModel(moneyId,fireType,fireDate,fireAmount,fireCategory)
-        val inputID = inputIdModel(moneyId)
         if(fireType == "1"){
 //            dbRef.child(uid).child("ID").push().setValue(inputID)
             dbRef.child(uid).child("IncomeHistory").child(moneyId).setValue(inputData).addOnCompleteListener {task ->

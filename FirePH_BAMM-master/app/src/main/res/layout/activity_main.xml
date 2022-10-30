@@ -10,12 +10,9 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="44dp"
         android:gravity="center"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp"
         android:text="Firebase Realtime Database App in Kotlin"
-        android:textColor="#495057"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,77 +20,79 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/btnInsertData"
-        android:layout_width="120dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="60dp"
-        android:background="#087f5b"
-        android:hapticFeedbackEnabled="true"
-        android:paddingStart="2dp"
+        android:layout_width="183dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="32dp"
         android:text="Insert Expenses"
-        android:textAlignment="center"
-        android:textColor="#ebfbee"
-        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/btnFetchData"
-        android:layout_width="120dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="60dp"
-        android:background="#087f5b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Preview Expenses"
-        android:textColor="#ebfbee"
-        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnForecastData"
-        android:layout_width="120dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="36dp"
-        android:background="#087f5b"
-        android:text="Forecast Expenses"
-        android:textColor="#ebfbee"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnInsertData" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnManageData"
-        android:layout_width="120dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="36dp"
-        android:background="#087f5b"
-        android:text="Manage Expenses"
-        android:textColor="#ebfbee"
-        android:textSize="16sp"
+    <Button
+        android:id="@+id/btnForecastData"
+        android:layout_width="181dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="104dp"
+        android:text="Forecast Expenses"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFetchData" />
+        app:layout_constraintTop_toBottomOf="@+id/btnInsertData" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogout"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="448dp"
-        android:background="#e03131"
-        android:text="Logout"
-        android:textColor="#ffe3e3"
-        android:textSize="16sp"
+    <Button
+        android:id="@+id/btnManageData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="184dp"
+        android:text="Manage Expenses"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/btnInsertData" />
+
+    <Button
+        android:id="@+id/btnViewTransaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="View Transactions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnManageData" />
+
+    <Button
+        android:id="@+id/btnReportData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="Report Data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnManageData" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnReportData" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

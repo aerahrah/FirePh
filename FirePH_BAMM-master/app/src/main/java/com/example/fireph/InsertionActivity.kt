@@ -20,7 +20,8 @@ import java.util.regex.Pattern
 
 
 class InsertionActivity : AppCompatActivity() {
-
+    private var item: String = ""
+    private var type: String = ""
     private lateinit var etDate: EditText
     private lateinit var etAmount: EditText
     private lateinit var etTest: EditText
@@ -38,9 +39,10 @@ class InsertionActivity : AppCompatActivity() {
 
         etDate = findViewById(R.id.etDate)
         etAmount = findViewById(R.id.etAmount)
+        etType = findViewById(R.id.etRadioGroup)
         btnSaveData = findViewById(R.id.btnSave)
         etCategory = findViewById(R.id.etCategory)
-        etType = findViewById(R.id.etRadioGroup)
+
 //        etTest = findViewById(R.id.etTest)
 
         val calendar = Calendar.getInstance();
@@ -57,12 +59,34 @@ class InsertionActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-        val items = arrayOf("Material", "Design", "Components", "Android", "5.0 Lollipop")
-        val income = arrayOf("Salary", "Bonus", "Allowance", "Benefits"   )
+        val items = arrayOf("Rent And Mortgage Payments", "Utilities", "Transportation Costs",
+            "Household Expenses","Insurance And Related Medical Costs",
+            "Recurring Subscriptions","Child Care","Pet Care",
+            "Entertainment","Miscellaneous", "Groceries And Personal Care")
+        val income = arrayOf("Salary", "Bonus", "Allowance", "Benefits")
 
+        etType.setOnCheckedChangeListener{group, checkedId ->
+            if(checkedId == R.id.etRadio1){
+                saveType("Income", income)
+            }
+            if(checkedId == R.id.etRadio2){
+                saveType("Expenses", items)
+            }
+        }
+
+        btnSaveData.setOnClickListener {
+            saveData()
+        }
+    }
+
+    private fun saveType(radio: String, array: Array<String>) {
+
+        type = radio
         autoCompleteTxt = findViewById(R.id.auto_complete_txt)
-        adapterItems = ArrayAdapter(this, R.layout.list_menu, items)
+        adapterItems = ArrayAdapter(this, R.layout.list_menu, array)
+        autoCompleteTxt.setText("")
         autoCompleteTxt.setAdapter(adapterItems)
+        item=""
 
         autoCompleteTxt.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
@@ -72,18 +96,13 @@ class InsertionActivity : AppCompatActivity() {
 
         autoCompleteTxt.onItemClickListener =
             OnItemClickListener { parent, view, position, id ->
-                val item = parent.getItemAtPosition(position).toString()
-                Toast.makeText(applicationContext, "Item: $item", Toast.LENGTH_SHORT).show()
+                val category = parent.getItemAtPosition(position).toString()
+                saveItem(category)
             }
+    }
 
-//        etTest.setOnClickListener {
-//            val intent = Intent(this, InsertionActivity::class.java)
-//            startActivity(intent)
-//        }
-
-        btnSaveData.setOnClickListener {
-            saveData()
-        }
+    private fun saveItem(category: String) {
+        item = category
     }
 
     fun Activity.hideSoftKeyboard() {
@@ -107,32 +126,30 @@ class InsertionActivity : AppCompatActivity() {
 
         val fireDate = etDate.text.toString()
         val fireAmount = etAmount.text.toString()
-        val fireType = etType.checkedRadioButtonId.toString()
-        var fireCategory = ""
+        val fireType = type
+        val fireCategory = item
         val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
-        autoCompleteTxt.onItemClickListener =
-            OnItemClickListener { parent, view, position, id ->
-                fireCategory = parent.getItemAtPosition(position).toString()
-                System.out.print(fireCategory)
-            }
         if (fireDate.isEmpty()) {
             etDate.error = "Please enter date"
+            return
         }
         if(fireAmount.isEmpty()){
             etAmount.error = "Please enter Amount"
+            return
         }
         if(fireType.isEmpty()){
             Toast.makeText(this, "Please select Type", Toast.LENGTH_SHORT).show();
-
+            return
         }
         if(fireCategory.isEmpty()){
             Toast.makeText(this, "Please select Category", Toast.LENGTH_SHORT).show();
+            return
         }
 
         val moneyId = dbRef.push().key!!
         val inputData  = inputDataModel(moneyId,fireType,fireDate,fireAmount,fireCategory)
-        if(fireType == "1"){
+        if(fireType == "Income"){
 //            dbRef.child(uid).child("ID").push().setValue(inputID)
             dbRef.child(uid).child("IncomeHistory").child(moneyId).setValue(inputData).addOnCompleteListener {task ->
                 if (task.isSuccessful) {
@@ -140,11 +157,12 @@ class InsertionActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }}.addOnFailureListener { err ->
+                System.out.println("HUUU")
                 Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
             }
 
         }
-        else if(fireType == "2"){
+        else if(fireType == "Expenses"){
 //            dbRef.child(uid).child("ID").push().setValue(inputID)
             dbRef.child(uid).child("ExpensesHistory").child(moneyId).setValue(inputData).addOnCompleteListener {task ->
                 if (task.isSuccessful) {
@@ -152,6 +170,7 @@ class InsertionActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }}.addOnFailureListener { err ->
+                System.out.println("HUUU")
                 Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
             }
         }

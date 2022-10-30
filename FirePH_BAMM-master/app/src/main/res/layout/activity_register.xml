@@ -26,8 +26,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="16dp"
+            android:fontFamily="sans-serif-condensed-light"
             android:gravity="center_horizontal"
-            android:text="Register"
+            android:text="REGISTER"
             android:textColor="#087f5b"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -61,12 +62,15 @@
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
-            android:text="Register" />
+            android:background="#087f5b"
+            android:text="Register"
+            android:textColor="#c3fae8"
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

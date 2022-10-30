@@ -42,6 +42,14 @@
             android:name=".categoryListAdapter"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".ViewTransactions"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".ReportData"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

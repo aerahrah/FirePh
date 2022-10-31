@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:text="Date: "
-                    android:textColor="@color/material_dynamic_neutral10"
+                    android:textColor="#343a40"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="sdfgdsfgsdfggggggggggggggggggggggggg"
-                    android:textColor="@color/black"
+                    android:textColor="#343a40"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:text="Amount: "
-                    android:textColor="@color/material_dynamic_neutral10"
+                    android:textColor="#343a40"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="20"
-                    android:textColor="@color/black"
+                    android:textColor="#343a40"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:text="Type: "
-                    android:textColor="@color/material_dynamic_neutral10"
+                    android:textColor="#343a40"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -98,7 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Stark"
-                    android:textColor="@color/black"
+                    android:textColor="#343a40"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:text="Category: "
-                    android:textColor="@color/material_dynamic_neutral10"
+                    android:textColor="#343a40"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="20"
-                    android:textColor="@color/black"
+                    android:textColor="#343a40"
                     android:textSize="18sp" />
 
 

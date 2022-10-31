@@ -6,17 +6,34 @@
         android:layout_height="match_parent"
         tools:context=".categoryListAdapter">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center_horizontal"
+        android:text="TRANSACTIONS"
+        android:textColor="#087f5b"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoryList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#f1f3f5"
+        android:layout_width="422dp"
+        android:layout_height="654dp"
+        android:layout_marginTop="3dp"
+        android:background="#f8f9fa"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/layout_category" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="1.0"
+        tools:listitem="@layout/layout_category">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

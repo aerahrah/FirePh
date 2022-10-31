@@ -8,11 +8,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.fireph.LoginActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 
 
 class forgetPassword : AppCompatActivity() {
@@ -23,7 +20,7 @@ class forgetPassword : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.forgot_pass_dialogue)
+        setContentView(R.layout.activity_forgotpass)
 
         etUsername = findViewById(R.id.etUsername)
         tvLoginPage = findViewById(R.id.tvLoginPage)

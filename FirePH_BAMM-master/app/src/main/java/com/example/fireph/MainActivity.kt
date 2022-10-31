@@ -47,7 +47,12 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        btnManageData.setOnClickListener {
+//        btnManageData.setOnClickListener {
+//            val intent = Intent(this, categoryListAdapter::class.java)
+//            startActivity(intent)
+//        }
+
+        btnFetchData.setOnClickListener {
             val intent = Intent(this, categoryListAdapter::class.java)
             startActivity(intent)
         }

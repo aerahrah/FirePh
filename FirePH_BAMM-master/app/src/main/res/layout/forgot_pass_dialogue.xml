@@ -4,24 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f8f9fa"
     android:orientation="vertical"
-    android:padding="24dp"
-    tools:context=".RegisterActivity">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="25dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginTop="25dp"
-        android:orientation="vertical">
+    android:padding="24dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -29,11 +13,10 @@
             android:layout_marginVertical="16dp"
             android:fontFamily="sans-serif-condensed-light"
             android:gravity="center_horizontal"
-            android:text="REGISTER"
+            android:text="FORGOT PASSWORD"
             android:textColor="#087f5b"
             android:textSize="30sp"
             android:textStyle="bold" />
-
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -41,7 +24,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etRegEmail"
+                android:id="@+id/etUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
@@ -49,31 +32,17 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp">
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSubmit"
+        android:layout_width="366dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="#087f5b"
+        android:text="SUBMIT"
+        android:textColor="#c3fae8"
+        android:textSize="16sp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etRegPass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Password"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnRegister"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="24dp"
-            android:background="#087f5b"
-            android:text="Register"
-            android:textColor="#c3fae8"
-            android:textSize="16sp" />
-
-        <LinearLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -83,22 +52,21 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Already registered"
+                android:text="Go back to login page"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/tvLoginHere"
+                android:id="@+id/tvLoginPage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:contextClickable="false"
+                android:cursorVisible="false"
                 android:fontFamily="sans-serif-condensed"
-                android:text="Login here"
+                android:text="Click here"
                 android:textColor="#087f5b"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
         </LinearLayout>
-
-    </LinearLayout>
 
 </LinearLayout>

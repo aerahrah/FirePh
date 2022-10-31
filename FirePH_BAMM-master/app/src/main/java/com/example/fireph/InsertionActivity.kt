@@ -150,35 +150,27 @@ class InsertionActivity : AppCompatActivity() {
         val moneyId = dbRef.push().key!!
         val inputData  = inputDataModel(moneyId,fireType,fireDate,fireAmount,fireCategory)
         if(fireType == "Income"){
-//            dbRef.child(uid).child("ID").push().setValue(inputID)
             dbRef.child(uid).child("IncomeHistory").child(moneyId).setValue(inputData).addOnCompleteListener {task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }}.addOnFailureListener { err ->
-                System.out.println("HUUU")
                 Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
             }
 
         }
         else if(fireType == "Expenses"){
-//            dbRef.child(uid).child("ID").push().setValue(inputID)
             dbRef.child(uid).child("ExpensesHistory").child(moneyId).setValue(inputData).addOnCompleteListener {task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }}.addOnFailureListener { err ->
-                System.out.println("HUUU")
                 Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
             }
         }
-
-
-
     }
-
 }
 internal class DecimalDigitsInputFilter(digitsBeforeZero: Int, digitsAfterZero: Int) :
     InputFilter {

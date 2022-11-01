@@ -1,137 +1,156 @@
 package com.example.fireph
 
+import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.widget.Button
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-//import com.github.mikephil.charting.animation.Easing
-//import com.github.mikephil.charting.charts.PieChart
-//import com.github.mikephil.charting.components.Description
-//import com.github.mikephil.charting.components.Legend
-//import com.github.mikephil.charting.data.Entry
-//import com.github.mikephil.charting.data.PieData
-//import com.github.mikephil.charting.data.PieDataSet
-//import com.github.mikephil.charting.data.PieEntry
-//import com.github.mikephil.charting.formatter.PercentFormatter
-//import com.github.mikephil.charting.utils.ColorTemplate
-//import com.github.mikephil.charting.utils.Utils
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.PercentFormatter
+import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.util.*
 
 class ReportData : AppCompatActivity() {
+
+    lateinit var pieChart:PieChart
+    private lateinit var pieRecyclerview : RecyclerView
+    private lateinit var buttonIncome : Button
+    private lateinit var userArrayList : ArrayList<pieAttributes>
+    private lateinit var date : String
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.piechart)
+
+        pieRecyclerview = findViewById(R.id.categoryPieList)
+        pieRecyclerview.layoutManager = LinearLayoutManager(this)
+        pieRecyclerview.setHasFixedSize(true)
+        userArrayList = arrayListOf<pieAttributes>()
+        buttonIncome = findViewById(R.id.buttonIncome)
+
+        val intent = intent
+        date = intent.getStringExtra("DATE").toString();
+        if(date == null){
+            finish()
+            return;
+        }
+
+        pieChart=findViewById(R.id.displayPieChart)
+
+        val theMap = HashMap<String, Float>()
+        val uid = FirebaseAuth.getInstance().currentUser!!.uid
+        FirebaseDatabase.getInstance().getReference("Users").child(uid).child("ExpensesHistory")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                @RequiresApi(Build.VERSION_CODES.O)
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()){
+                        for (userSnapshot in snapshot.children){
+                            val user = userSnapshot.getValue(viewDataModel::class.java)
+                            if (user != null) {
+                                if((user.fireDate).toString().contains(date)){
+                                    if(theMap.containsKey(user.fireCategory.toString())){
+                                        val total = theMap[user.fireCategory.toString()]!!.toFloat() + (user.fireAmount.toString().toFloat())
+                                        theMap[user.fireCategory.toString()] = total
+                                    }
+                                    else {
+                                        theMap[(user.fireCategory).toString()] = ((user.fireAmount).toString()).toFloat()
+                                    }
+                                }
+                            }
+                        }
+                        if(theMap.isNotEmpty()){
+                            saveData(theMap)
+                        }
+                    }
+                }
+                override fun onCancelled(databaseError: DatabaseError) {
+                    throw databaseError.toException()
+                }
+            })
+
+        buttonIncome.setOnClickListener {
+            val intent = Intent(this, PieIncomeChart::class.java)
+            intent.putExtra("DATE", date)
+            startActivity(intent)
+            finish()
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
+        }
+
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun saveData(theMap: HashMap<String, Float>) {
+        val DUTCH_COLORS = intArrayOf(
+            ColorTemplate.rgb("#e60049"),
+            ColorTemplate.rgb("#0bb4ff"),
+            ColorTemplate.rgb("#50e991"),
+            ColorTemplate.rgb("#e6d800"),
+            ColorTemplate.rgb("#9b19f5"),
+            ColorTemplate.rgb("#ffa300"),
+            ColorTemplate.rgb("#dc0ab4"),
+            ColorTemplate.rgb("#b3d4ff"),
+            ColorTemplate.rgb("#00bfa0"),
+            ColorTemplate.rgb("#3498db")
+        )
+
+        val list:ArrayList<PieEntry> = ArrayList()
+        var i = 0
+        theMap.forEach { (k, v) ->
+            val colors = DUTCH_COLORS[i]
+            val user=pieAttributes(name = k, amount = v,colors=colors)
+            userArrayList.add(user)
+            list.add(PieEntry(v,k))
+            pieRecyclerview.adapter = pieListAdapter(userArrayList)
+            i += 1
+        }
+
+        val pieDataSet= PieDataSet(list,"List")
+        pieDataSet.setColors(DUTCH_COLORS,255)
+        pieDataSet.valueTextColor= Color.BLACK
+        pieDataSet.valueTextSize=15f
+
+
+        val month = date.substring((5)).toInt()
+        var monthName: String = ""
+        when (month) {
+            1 -> {monthName="January"}
+            2 -> {monthName="February"}
+            3 -> {monthName="March"}
+            4 -> {monthName="April"}
+            5 -> {monthName="May"}
+            6 -> {monthName="June"}
+            7 -> {monthName="July"}
+            8 -> {monthName="August"}
+            9 -> {monthName="September"}
+            10 -> {monthName="October"}
+            11 -> {monthName="November"}
+            12 -> {monthName="December"}
+
+        }
+        val pieData= PieData(pieDataSet)
+        pieChart.data= pieData
+        pieChart.setUsePercentValues(true)
+        pieChart.centerText = monthName
+        pieChart.setCenterTextSize(25f)
+        pieChart.legend.isEnabled = false
+        pieChart.animateY(2000)
+        pieChart.setDrawEntryLabels(false)
+        pieChart.description.isEnabled = false
+        pieDataSet.valueFormatter = PercentFormatter(pieChart)
+        pieChart.setUsePercentValues(true)
+
+    }
 }
-//    lateinit var pieChart:PieChart
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.piechart)
-//
-//        val intent = intent
-//        val date : String? = intent.getStringExtra("DATE");
-//        if(date == null){
-//            finish()
-//            return;
-//        }
-//
-//        pieChart=findViewById(R.id.displayPieChart)
-//
-//        var idString = arrayOf<String>()
-//        val uid = FirebaseAuth.getInstance().currentUser!!.uid
-//        FirebaseDatabase.getInstance().getReference("Users").child(uid).child("ExpensesHistory")
-//            .addListenerForSingleValueEvent(object : ValueEventListener {
-//                override fun onDataChange(snapshot: DataSnapshot) {
-//                    if (snapshot.exists()){
-//                        for (userSnapshot in snapshot.children){
-//                            val user = userSnapshot.getValue(viewDataModel::class.java)
-//                            if (user != null) {
-//                                if((user.fireDate).toString().contains(date)){
-//                                    userArrayList.add(user)
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//                override fun onCancelled(databaseError: DatabaseError) {
-//                    throw databaseError.toException()
-//                }
-//            })
-//        val list:ArrayList<PieEntry> = ArrayList()
-//
-//        list.add(PieEntry(100f,"100"))
-//        list.add(PieEntry(101f,"101"))
-//        list.add(PieEntry(102f,"102"))
-//        list.add(PieEntry(103f,"103"))
-//        list.add(PieEntry(104f,"104"))
-//
-//        val pieDataSet= PieDataSet(list,"List")
-//
-//        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS,255)
-//        pieDataSet.valueTextColor= Color.BLACK
-//        pieDataSet.valueTextSize=15f
-//
-//        val pieData= PieData(pieDataSet)
-//
-//        pieChart.data= pieData
-//        pieChart.description.text= "Pie Chart"
-//        pieChart.centerText="List"
-//        pieChart.animateY(2000)
-//
-//    }
-//}
-////    private var pieChart: PieChart?= null
-////    override fun onCreate(savedInstanceState: Bundle?) {
-////        super.onCreate(savedInstanceState)
-////        setContentView(R.layout.activity_main)
-////        Utils.init(this)
-////        pieChart = findViewById(R.id.activity_main_piechart)
-//////        setupPieChart()
-////        loadPieChartData()
-////    }
-////
-//////    private fun setupPieChart() {
-//////        val descChartDescription = Description()
-//////        descChartDescription.isEnabled = true
-//////        pieChart!!.description = descChartDescription
-//////        pieChart!!.isDrawHoleEnabled = true
-//////        pieChart!!.setUsePercentValues(true)
-//////        pieChart!!.setEntryLabelTextSize(12f)
-//////        pieChart!!.setEntryLabelColor(Color.BLACK)
-//////        pieChart!!.centerText = "Spending by Category"
-//////        pieChart!!.setCenterTextSize(24f)
-//////        pieChart!!.description.isEnabled = false
-//////        val l = pieChart!!.legend
-//////        l.verticalAlignment = Legend.LegendVerticalAlignment.TOP
-//////        l.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
-//////        l.orientation = Legend.LegendOrientation.VERTICAL
-//////        l.setDrawInside(false)
-//////        l.isEnabled = true
-//////    }
-////
-////    private fun loadPieChartData() {
-////        val entries = ArrayList<PieEntry>()
-////        entries.add(PieEntry(0.2f, "Food & Dining"))
-////        entries.add(PieEntry(0.15f, "Medical"))
-////        entries.add(PieEntry(0.10f, "Entertainment"))
-////        entries.add(PieEntry(0.25f, "Electricity and Gas"))
-////        entries.add(PieEntry(0.3f, "Housing"))
-////        val colors = ArrayList<Int>()
-////        for (color in ColorTemplate.MATERIAL_COLORS) {
-////            colors.add(color)
-////        }
-////        for (color in ColorTemplate.VORDIPLOM_COLORS) {
-////            colors.add(color)
-////        }
-////        val dataSet = PieDataSet(entries, "Expense Category")
-////        dataSet.colors = colors
-////        val data = PieData(dataSet)
-////        data.setDrawValues(true)
-////        data.setValueFormatter(PercentFormatter(pieChart))
-////        data.setValueTextSize(12f)
-////        data.setValueTextColor(Color.BLACK)
-////        pieChart!!.data = data
-////        pieChart!!.invalidate()
-////        pieChart!!.animateY(1400, Easing.EaseInOutQuad)
-////    }
-////}

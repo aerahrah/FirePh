@@ -30,7 +30,7 @@ class CategoryIncomeAdapter : AppCompatActivity() {
         getUserData()
 
         buttonExpenses.setOnClickListener {
-            val intent = Intent(this, categoryListAdapter::class.java)
+            val intent = Intent(this, CategoryListAdapter::class.java)
             startActivity(intent)
             finish()
             overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
@@ -49,7 +49,7 @@ class CategoryIncomeAdapter : AppCompatActivity() {
                             totalAmount += user!!.fireAmount!!.toFloat()
                             userArrayList.add(user!!)
                         }
-                        userRecyclerview.adapter = categoryAdapter(userArrayList)
+                        userRecyclerview.adapter = CategoryExpensesAdapter(userArrayList)
                         totalAmountText.setText(totalAmount.toString()+"php")
                     }
                 }

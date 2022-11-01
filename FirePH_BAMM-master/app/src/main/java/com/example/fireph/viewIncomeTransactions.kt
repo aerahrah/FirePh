@@ -63,7 +63,7 @@ class viewIncomeTransactions : AppCompatActivity() {
                                 }
                             }
                         }
-                        userRecyclerview.adapter = monthlyListAdapter(userArrayList)
+                        userRecyclerview.adapter = MonthlyListAdapter(userArrayList)
                         totalAmountText.setText(totalAmount.toString()+"php")
                     }
                 }

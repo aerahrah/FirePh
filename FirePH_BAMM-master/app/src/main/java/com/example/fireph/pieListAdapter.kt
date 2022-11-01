@@ -8,11 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.roundToInt
 
-class pieListAdapter(private val userList: ArrayList<pieAttributes>) : RecyclerView.Adapter<pieListAdapter.MyViewHolder>() {
+class pieListAdapter(private val userList: ArrayList<PiechartAttributesModel>) : RecyclerView.Adapter<pieListAdapter.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.pielistview,
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.piechart_listview,
             parent,false)
         return MyViewHolder(itemView)
     }

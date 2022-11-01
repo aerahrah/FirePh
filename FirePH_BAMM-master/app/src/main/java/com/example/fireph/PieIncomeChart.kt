@@ -1,15 +1,12 @@
 package com.example.fireph
 
 import android.content.Intent
-import android.content.res.Resources
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.charts.PieChart
@@ -23,7 +20,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import java.text.SimpleDateFormat
 import java.util.*
 
 class PieIncomeChart : AppCompatActivity() {
@@ -31,17 +27,17 @@ class PieIncomeChart : AppCompatActivity() {
     lateinit var pieChart:PieChart
     private lateinit var pieRecyclerview : RecyclerView
     private lateinit var buttonExpenses : Button
-    private lateinit var userArrayList : ArrayList<pieAttributes>
+    private lateinit var userArrayList : ArrayList<PiechartAttributesModel>
     private lateinit var date : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.pieincomechart)
+        setContentView(R.layout.piechart_income)
 
         pieRecyclerview = findViewById(R.id.categoryPieList)
         pieRecyclerview.layoutManager = LinearLayoutManager(this)
         pieRecyclerview.setHasFixedSize(true)
-        userArrayList = arrayListOf<pieAttributes>()
+        userArrayList = arrayListOf<PiechartAttributesModel>()
         buttonExpenses = findViewById(R.id.buttonExpenses)
 
         val intent = intent
@@ -85,7 +81,7 @@ class PieIncomeChart : AppCompatActivity() {
             })
 
         buttonExpenses.setOnClickListener {
-            val intent = Intent(this, ReportData::class.java)
+            val intent = Intent(this, PieExpensesChart::class.java)
             intent.putExtra("DATE", date)
             startActivity(intent)
             finish()
@@ -112,7 +108,7 @@ class PieIncomeChart : AppCompatActivity() {
         var i = 0
         theMap.forEach { (k, v) ->
             val colors = DUTCH_COLORS[i]
-            val user=pieAttributes(name = k, amount = v,colors=colors)
+            val user=PiechartAttributesModel(name = k, amount = v,colors=colors)
             userArrayList.add(user)
             list.add(PieEntry(v,k))
             pieRecyclerview.adapter = pieListAdapter(userArrayList)

@@ -1,23 +1,16 @@
 package com.example.fireph
 
-import android.app.AlertDialog
-import android.util.Property
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.Button
-import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import org.w3c.dom.Text
 
-class categoryAdapter(private val userList : ArrayList<Categories>) : RecyclerView.Adapter<categoryAdapter.MyViewHolder>() {
+class CategoryExpensesAdapter(private val userList : ArrayList<Categories>) : RecyclerView.Adapter<CategoryExpensesAdapter.MyViewHolder>() {
 
 
     inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){

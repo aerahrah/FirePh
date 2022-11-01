@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 //        }
 
         btnFetchData.setOnClickListener {
-            val intent = Intent(this, categoryListAdapter::class.java)
+            val intent = Intent(this, CategoryListAdapter::class.java)
             startActivity(intent)
         }
 
@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             else if(i==false){
-                val intent = Intent(this, ReportData::class.java)
+                val intent = Intent(this, PieExpensesChart::class.java)
                 intent.putExtra("DATE", date)
                 startActivity(intent)
             }

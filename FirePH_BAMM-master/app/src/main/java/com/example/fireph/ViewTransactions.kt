@@ -19,7 +19,7 @@ class ViewTransactions : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_categories)
+        setContentView(R.layout.activity_expenses)
 
         val intent = intent
         val date : String? = intent.getStringExtra("DATE");
@@ -63,7 +63,7 @@ class ViewTransactions : AppCompatActivity() {
                                 }
                             }
                         }
-                        userRecyclerview.adapter = monthlyListAdapter(userArrayList)
+                        userRecyclerview.adapter = MonthlyListAdapter(userArrayList)
                         totalAmountText.setText(totalAmount.toString()+"php")
                     }
                 }

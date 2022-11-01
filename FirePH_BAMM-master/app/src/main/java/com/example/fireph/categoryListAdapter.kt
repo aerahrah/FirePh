@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-class categoryListAdapter : AppCompatActivity() {
+class CategoryListAdapter : AppCompatActivity() {
     fun append(arr: Array<String>, element: String): Array<String> {
         val list: MutableList<String> = arr.toMutableList()
         System.out.println(element)
@@ -24,7 +24,7 @@ class categoryListAdapter : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_categories)
+        setContentView(R.layout.activity_expenses)
 
         userRecyclerview = findViewById(R.id.categoryList)
         userRecyclerview.layoutManager = LinearLayoutManager(this)
@@ -55,7 +55,7 @@ class categoryListAdapter : AppCompatActivity() {
                             totalAmount += user!!.fireAmount!!.toFloat()
                             userArrayList.add(user!!)
                         }
-                        userRecyclerview.adapter = categoryAdapter(userArrayList)
+                        userRecyclerview.adapter = CategoryExpensesAdapter(userArrayList)
                         totalAmountText.setText(totalAmount.toString()+"php")
                     }
                 }

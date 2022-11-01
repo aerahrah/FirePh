@@ -18,7 +18,7 @@
         android:paddingRight="5dp"
         android:text="FirePh Budget Planner Application"
         android:textColor="#343a40"
-        android:textSize="32sp"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

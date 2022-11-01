@@ -12,7 +12,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 
 
-class forgetPassword : AppCompatActivity() {
+class ForgotPassActivity : AppCompatActivity() {
     private lateinit var etUsername: TextInputEditText
     private lateinit var tvLoginPage: TextView
     private lateinit var btnSubmit: Button
@@ -46,7 +46,7 @@ class forgetPassword : AppCompatActivity() {
         tvLoginPage.setOnClickListener(View.OnClickListener { view: View? ->
             startActivity(
                 Intent(
-                    this@forgetPassword,
+                    this@ForgotPassActivity,
                     LoginActivity::class.java
                 )
             )

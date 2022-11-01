@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class monthlyListAdapter(private val userList : ArrayList<viewDataModel>) : RecyclerView.Adapter<monthlyListAdapter.MyViewHolder>() {
+class MonthlyListAdapter(private val userList : ArrayList<viewDataModel>) : RecyclerView.Adapter<MonthlyListAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         private lateinit var dbRef: DatabaseReference
@@ -46,7 +46,7 @@ class monthlyListAdapter(private val userList : ArrayList<viewDataModel>) : Recy
 
     }
 
-    override fun onBindViewHolder(holder: monthlyListAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MonthlyListAdapter.MyViewHolder, position: Int) {
 
         val currentitem = userList[position]
         holder.bind(userList[position], position)

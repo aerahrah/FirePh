@@ -31,7 +31,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".forgetPassword"
+            android:name=".ForgotPassActivity"
             android:exported="true">
         </activity>
         <activity
@@ -44,7 +44,7 @@
         </activity>
 
         <activity
-            android:name=".categoryListAdapter"
+            android:name=".CategoryListAdapter"
             android:exported="true">
         </activity>
         <activity
@@ -52,7 +52,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".ReportData"
+            android:name=".PieExpensesChart"
             android:exported="true">
         </activity>
         <activity

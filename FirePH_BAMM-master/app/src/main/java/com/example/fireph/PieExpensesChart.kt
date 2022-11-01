@@ -22,22 +22,22 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.util.*
 
-class ReportData : AppCompatActivity() {
+class PieExpensesChart : AppCompatActivity() {
 
     lateinit var pieChart:PieChart
     private lateinit var pieRecyclerview : RecyclerView
     private lateinit var buttonIncome : Button
-    private lateinit var userArrayList : ArrayList<pieAttributes>
+    private lateinit var userArrayList : ArrayList<PiechartAttributesModel>
     private lateinit var date : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.piechart)
+        setContentView(R.layout.piechart_expenses)
 
         pieRecyclerview = findViewById(R.id.categoryPieList)
         pieRecyclerview.layoutManager = LinearLayoutManager(this)
         pieRecyclerview.setHasFixedSize(true)
-        userArrayList = arrayListOf<pieAttributes>()
+        userArrayList = arrayListOf<PiechartAttributesModel>()
         buttonIncome = findViewById(R.id.buttonIncome)
 
         val intent = intent
@@ -110,7 +110,7 @@ class ReportData : AppCompatActivity() {
         var i = 0
         theMap.forEach { (k, v) ->
             val colors = DUTCH_COLORS[i]
-            val user=pieAttributes(name = k, amount = v,colors=colors)
+            val user=PiechartAttributesModel(name = k, amount = v,colors=colors)
             userArrayList.add(user)
             list.add(PieEntry(v,k))
             pieRecyclerview.adapter = pieListAdapter(userArrayList)

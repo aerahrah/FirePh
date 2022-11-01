@@ -18,7 +18,7 @@
         android:gravity="center_horizontal"
         android:text="INSERT DATA"
         android:textColor="#087f5b"
-        android:textSize="30sp"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

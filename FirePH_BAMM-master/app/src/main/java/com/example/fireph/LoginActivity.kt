@@ -82,11 +82,11 @@ class LoginActivity : AppCompatActivity() {
                     ).show()
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 } else {
-//                    Toast.makeText(
-//                        this@LoginActivity,
-//                        "Log in Error: " + task.exception!!.message,
-//                        Toast.LENGTH_SHORT
-//                    ).show()
+                    Toast.makeText(
+                        this@LoginActivity,
+                        "Log in Error: " + task.exception!!.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }

@@ -43,7 +43,7 @@
 
             <TextView
                 android:id="@+id/idTVHead2"
-                android:layout_width="360dp"
+                android:layout_width="340dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:gravity="center"
@@ -57,7 +57,7 @@
             <androidx.appcompat.widget.AppCompatButton
 
                 android:id="@+id/buttonIncome"
-                android:layout_width="20dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_weight="1"

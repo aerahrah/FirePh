@@ -38,7 +38,7 @@
 
         <TextView
             android:id="@+id/tvAmount"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:layout_weight="1"

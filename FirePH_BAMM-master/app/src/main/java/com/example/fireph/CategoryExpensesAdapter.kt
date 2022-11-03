@@ -40,7 +40,7 @@ class CategoryExpensesAdapter(private val userList : ArrayList<Categories>) : Re
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.actity_list,
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.activity_list,
             parent,false)
         return MyViewHolder(itemView)
 

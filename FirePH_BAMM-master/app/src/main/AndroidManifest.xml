@@ -68,6 +68,10 @@
             android:name=".viewIncomeTransactions"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".ManageActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

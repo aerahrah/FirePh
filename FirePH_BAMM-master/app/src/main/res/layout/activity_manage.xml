@@ -81,7 +81,7 @@
         tools:ignore="RtlCompat" />
 
     <TextView
-        android:id="@+id/textAmount"
+        android:id="@+id/textAmount2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

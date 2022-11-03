@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         btnViewData = findViewById(R.id.btnViewTransaction)
         btnReportData = findViewById(R.id.btnReportData)
 
+
         btnLogOut = findViewById(R.id.btnLogout)
         mAuth = FirebaseAuth.getInstance()
 
@@ -45,7 +46,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, InsertionActivity::class.java)
             startActivity(intent)
         }
-
 
 //        btnManageData.setOnClickListener {
 //            val intent = Intent(this, categoryListAdapter::class.java)
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         val myYear = calendar.get(Calendar.YEAR);
 
         btnViewData.setOnClickListener {
-            val dialog = datePickerDialog(true)
+            val dialog = datePickerDialog("ViewData")
 
             dialog.show()
 
@@ -71,9 +71,17 @@ class MainActivity : AppCompatActivity() {
                 day.visibility = View.GONE
             }
         }
+        btnManageData.setOnClickListener {
+            val dialog = datePickerDialog("ManageData")
+            dialog.show()
 
+            val day = dialog.findViewById<View>(Resources.getSystem().getIdentifier("android:id/day", null, null))
+            if (day != null) {
+                day.visibility = View.GONE
+            }
+        }
         btnReportData.setOnClickListener {
-            val dialog = datePickerDialog(false)
+            val dialog = datePickerDialog("ReportData")
             dialog.show()
 
             val day = dialog.findViewById<View>(Resources.getSystem().getIdentifier("android:id/day", null, null))
@@ -92,7 +100,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     @SuppressLint("SetTextI18n")
-    fun datePickerDialog(i: Boolean): DatePickerDialog {
+    fun datePickerDialog(i: String): DatePickerDialog {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
@@ -101,13 +109,18 @@ class MainActivity : AppCompatActivity() {
         val datePickerDialog = DatePickerDialog(this@MainActivity, android.R.style.Theme_Holo_Dialog, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
             date = (""+year+"-"+(monthOfYear+1))
             System.out.println(date)
-            if(i==true){
+            if(i=="ViewData"){
                 val intent = Intent(this, ViewTransactions::class.java)
                 intent.putExtra("DATE", date)
                 startActivity(intent)
             }
-            else if(i==false){
+            else if(i=="ReportData"){
                 val intent = Intent(this, PieExpensesChart::class.java)
+                intent.putExtra("DATE", date)
+                startActivity(intent)
+            }
+            else if(i=="ManageData"){
+                val intent = Intent(this, ManageActivity::class.java)
                 intent.putExtra("DATE", date)
                 startActivity(intent)
             }

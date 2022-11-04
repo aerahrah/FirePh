@@ -15,26 +15,41 @@ class ManageActivity : AppCompatActivity() {
     private lateinit var totalAmountText2 : TextView
     private lateinit var totalAmountText1 : TextView
     private lateinit var buttonExpenses : Button
+    var totalAmount1 = 0.0
+    var totalAmount2 = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage)
-
+        val date : String? = intent.getStringExtra("DATE");
+        if(date == null){
+            finish()
+            return;
+        }
         totalAmountText2 = findViewById(R.id.textAmount2)
         totalAmountText1 = findViewById(R.id.textAmount1)
-        getUserDataIncome()
-        getUserDataExpense()
+        getUserDataIncome(date)
+        getUserDataExpense(date)
+        getSavingPercentage(totalAmount1, totalAmount2)
     }
-    private fun getUserDataIncome(){
-        var totalAmount1 = 0.0
+    private fun getSavingPercentage(amount1: Double, amount2: Double){
+
+    }
+    private fun getUserDataIncome(date: String) {
+
         val uid = FirebaseAuth.getInstance().currentUser!!.uid
         FirebaseDatabase.getInstance().getReference("Users").child(uid).child("IncomeHistory")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()){
-                        for (userSnapshot in snapshot.children){
+                        System.out.println("Exist")
+                        for (userSnapshot in snapshot.children) {
                             val user = userSnapshot.getValue(Categories::class.java)
-                            totalAmount1 += user!!.fireAmount!!.toFloat()
+                            if (user != null) {
+                                if ((user.fireDate).toString().contains(date)) {
+                                    totalAmount1 += user!!.fireAmount!!.toFloat()
+                                }
+                            }
                         }
                         totalAmountText1.setText(totalAmount1.toString()+"php")
                     }
@@ -44,16 +59,21 @@ class ManageActivity : AppCompatActivity() {
                 }
             })
     }
-    private fun getUserDataExpense() {
-        var totalAmount2 = 0.0
+    private fun getUserDataExpense(date: String) {
+
         val uid = FirebaseAuth.getInstance().currentUser!!.uid
         FirebaseDatabase.getInstance().getReference("Users").child(uid).child("ExpensesHistory")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()){
+                        System.out.println("Exist")
                         for (userSnapshot in snapshot.children){
                             val user = userSnapshot.getValue(Categories::class.java)
-                            totalAmount2 += user!!.fireAmount!!.toFloat()
+                            if (user != null) {
+                                if((user.fireDate).toString().contains(date)){
+                                    totalAmount2 += user!!.fireAmount!!.toFloat()
+                                }
+                            }
                         }
                         totalAmountText2.setText(totalAmount2.toString()+"php")
                     }

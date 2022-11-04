@@ -63,7 +63,7 @@ class RegisterActivity : AppCompatActivity() {
                     ).show()
                     startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
                     val empId = FirebaseAuth.getInstance().currentUser!!.uid
-                    val inputData  = inputUserModel(empId,email,password)
+                    val inputData  = inputUserModel(empId,email)
 
                     dbRef.child(empId).child("UserInfo").setValue(inputData).addOnCompleteListener {task ->
                         if (task.isSuccessful) {

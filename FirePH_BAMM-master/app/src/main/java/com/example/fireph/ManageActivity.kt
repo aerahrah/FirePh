@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class ManageActivity : AppCompatActivity() {
     private lateinit var userArrayList : ArrayList<Categories>
@@ -37,12 +39,18 @@ class ManageActivity : AppCompatActivity() {
         getUserDataExpense(date)
 
     }
+    private fun roundOffDecimal(number: Double): Double {
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.FLOOR
+        return df.format(number).toDouble()
+    }
     private fun getSavingPercentage(amount1: Double, amount2: Double){
         var savingText = 0.0
         var savingTextPercentage = 0.0
         savingText = amount1 - amount2
 
         savingTextPercentage = (savingText/amount1)*100
+        savingTextPercentage = roundOffDecimal(savingTextPercentage)
         if(savingText < 0){
             textSaving.setTextColor(Color.parseColor("#c92a2a"))
             textSavingPercentage.setTextColor(Color.parseColor("#c92a2a"))

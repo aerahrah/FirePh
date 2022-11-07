@@ -1,6 +1,7 @@
 package com.example.fireph
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -42,6 +43,13 @@ class ManageActivity : AppCompatActivity() {
         savingText = amount1 - amount2
 
         savingTextPercentage = (savingText/amount1)*100
+        if(savingText < 0){
+            textSaving.setTextColor(Color.parseColor("#c92a2a"))
+            textSavingPercentage.setTextColor(Color.parseColor("#c92a2a"))
+        }else if(savingText > 0){
+            textSaving.setTextColor(Color.parseColor("#087f5b"))
+            textSavingPercentage.setTextColor(Color.parseColor("#087f5b"))
+        }
         textSaving.setText(savingText.toString()+"php")
         textSavingPercentage.setText(savingTextPercentage.toString()+"%")
     }

@@ -14,6 +14,8 @@ class ManageActivity : AppCompatActivity() {
     private lateinit var userArrayList : ArrayList<Categories>
     private lateinit var totalAmountText2 : TextView
     private lateinit var totalAmountText1 : TextView
+    private lateinit var textSaving : TextView
+    private lateinit var textSavingPercentage : TextView
     private lateinit var buttonExpenses : Button
     var totalAmount1 = 0.0
     var totalAmount2 = 0.0
@@ -28,12 +30,20 @@ class ManageActivity : AppCompatActivity() {
         }
         totalAmountText2 = findViewById(R.id.textAmount2)
         totalAmountText1 = findViewById(R.id.textAmount1)
+        textSaving = findViewById(R.id.textSaving)
+        textSavingPercentage = findViewById(R.id.textSavingPer)
         getUserDataIncome(date)
         getUserDataExpense(date)
-        getSavingPercentage(totalAmount1, totalAmount2)
+
     }
     private fun getSavingPercentage(amount1: Double, amount2: Double){
+        var savingText = 0.0
+        var savingTextPercentage = 0.0
+        savingText = amount1 - amount2
 
+        savingTextPercentage = (savingText/amount1)*100
+        textSaving.setText(savingText.toString()+"php")
+        textSavingPercentage.setText(savingTextPercentage.toString()+"%")
     }
     private fun getUserDataIncome(date: String) {
 
@@ -52,6 +62,7 @@ class ManageActivity : AppCompatActivity() {
                             }
                         }
                         totalAmountText1.setText(totalAmount1.toString()+"php")
+                        getSavingPercentage(totalAmount1, totalAmount2)
                     }
                 }
                 override fun onCancelled(databaseError: DatabaseError) {
@@ -76,6 +87,7 @@ class ManageActivity : AppCompatActivity() {
                             }
                         }
                         totalAmountText2.setText(totalAmount2.toString()+"php")
+                        getSavingPercentage(totalAmount1, totalAmount2)
                     }
                 }
                 override fun onCancelled(databaseError: DatabaseError) {

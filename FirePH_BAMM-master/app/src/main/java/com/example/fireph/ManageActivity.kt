@@ -19,11 +19,12 @@ class ManageActivity : AppCompatActivity() {
     private lateinit var totalAmountText1 : TextView
     private lateinit var textSaving : TextView
     private lateinit var textSavingPercentage : TextView
-    private lateinit var buttonExpenses : Button
+    private lateinit var btnSaveData : Button
     var totalAmount1 = 0.0
     var totalAmount2 = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage)
         val date : String? = intent.getStringExtra("DATE");
@@ -31,6 +32,7 @@ class ManageActivity : AppCompatActivity() {
             finish()
             return;
         }
+        btnSaveData = findViewById(R.id.btnUpdateSaving)
         totalAmountText2 = findViewById(R.id.textAmount2)
         totalAmountText1 = findViewById(R.id.textAmount1)
         textSaving = findViewById(R.id.textSaving)
@@ -38,6 +40,10 @@ class ManageActivity : AppCompatActivity() {
         getUserDataIncome(date)
         getUserDataExpense(date)
 
+        btnSaveData.setOnClickListener {
+            val intent = Intent(this, ManageActivitySetSavings::class.java)
+            startActivity(intent)
+        }
     }
     private fun roundOffDecimal(number: Double): Double {
         val df = DecimalFormat("#.##")

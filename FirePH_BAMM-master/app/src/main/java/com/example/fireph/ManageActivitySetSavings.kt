@@ -35,7 +35,7 @@ class ManageActivitySetSavings : AppCompatActivity() {
 
         val items = arrayOf(
             "10","15","20","25","30","35","40","45",
-            "50","55","60","65","70","75","80","85"
+            "50","55","60","65","70","75"
         )
         saveType(items)
         btnSaveData.setOnClickListener {

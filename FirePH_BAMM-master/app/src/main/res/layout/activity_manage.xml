@@ -31,7 +31,7 @@
         android:gravity="center"
         android:paddingRight="8dp"
         android:text="Gathering data, please wait.."
-        android:textAlignment="viewEnd"
+        android:textAlignment="textStart"
         android:textColor="#343a40"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -39,8 +39,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textAmount2"
-        app:layout_constraintVertical_bias="0.373"
+        app:layout_constraintTop_toBottomOf="@id/textSaving"
+        app:layout_constraintVertical_bias="0.111"
         tools:ignore="RtlCompat" />
 
     <TextView
@@ -66,22 +66,20 @@
         android:id="@+id/textSaving"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_weight="1"
         android:fontFamily="sans-serif-condensed"
         android:gravity="center"
         android:paddingRight="8dp"
         android:text="Gathering data, please wait.."
-        android:textAlignment="viewEnd"
+        android:textAlignment="textStart"
         android:textColor="#343a40"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.861"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textAmount2"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.52"
         tools:ignore="RtlCompat" />
 
     <TextView

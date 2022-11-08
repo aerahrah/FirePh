@@ -12,8 +12,7 @@ import android.widget.AdapterView.OnItemClickListener
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -83,6 +82,35 @@ class ManageActivitySetSavings : AppCompatActivity() {
     }
 
     private fun saveData() {
+        val uid = FirebaseAuth.getInstance().currentUser!!.uid
+
+        FirebaseDatabase.getInstance().getReference("Users").child(uid).child("SavingPercentage")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()){
+                        var ct = snapshot.childrenCount.toInt()
+                        if (ct==1){
+                            dbRef = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("SavingPercentage")
+                            for (userSnapshot in snapshot.children){
+                                val user = userSnapshot.getValue(savingDataModel::class.java)
+                                if (user != null) {
+                                    dbRef.child(user.savingId.toString()).removeValue()
+                                }
+                            }
+                            saveDataPercentage()
+                        }else{
+                            saveDataPercentage()
+                        }
+                    }else{
+                        saveDataPercentage()
+                    }
+                }
+                override fun onCancelled(databaseError: DatabaseError) {
+                    throw databaseError.toException()
+                }
+            })
+    }
+    private fun saveDataPercentage(){
         val fireCategory = item
         val uid = FirebaseAuth.getInstance().currentUser!!.uid
 

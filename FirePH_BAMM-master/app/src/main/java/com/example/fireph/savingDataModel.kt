@@ -1,5 +1,6 @@
 package com.example.fireph
 
 data class savingDataModel(
-    var saving: String? = null
+    var savingId: String? = null,
+    var savingValue: String? = null
 )

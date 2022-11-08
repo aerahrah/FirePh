@@ -14,7 +14,8 @@ class CategoryExpensesAdapter(private val userList : ArrayList<Categories>) : Re
 
 
     inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        private lateinit var dbRef: DatabaseReference
+        private lateinit var dbRefExpenses: DatabaseReference
+        private lateinit var dbRefIncome: DatabaseReference
         val fireAmount: TextView = itemView.findViewById(R.id.tvfireAmount)
         val fireCategory: TextView = itemView.findViewById(R.id.tvfireCategory)
         val fireDate: TextView = itemView.findViewById(R.id.tvfireDate)
@@ -30,8 +31,10 @@ class CategoryExpensesAdapter(private val userList : ArrayList<Categories>) : Re
         fun deleteItemDatabase(currentitem: Categories){
 
             val uid = FirebaseAuth.getInstance().currentUser!!.uid
-            dbRef = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("ExpensesHistory")
-            dbRef.child(currentitem.empId.toString()).removeValue()
+            dbRefExpenses = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("ExpensesHistory")
+            dbRefIncome = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("IncomeHistory")
+            dbRefExpenses.child(currentitem.empId.toString()).removeValue()
+            dbRefIncome.child(currentitem.empId.toString()).removeValue()
         }
     }
     fun deleteItem(index: Int){

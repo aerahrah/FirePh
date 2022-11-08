@@ -84,15 +84,25 @@ class ManageActivitySetSavings : AppCompatActivity() {
 
     private fun saveData() {
         val fireCategory = item
+        val uid = FirebaseAuth.getInstance().currentUser!!.uid
+
         dbRef = FirebaseDatabase.getInstance("https://budgetfireph-default-rtdb.firebaseio.com/")
             .getReference("Users")
 
         if (fireCategory.isEmpty()) {
-            Toast.makeText(this, "Please select Category", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please select Saving Percentage", Toast.LENGTH_SHORT).show();
             return
         }
 
-        val moneyId = dbRef.push().key!!
-
+        val savingId = dbRef.push().key!!
+        val inputSaving  = savingDataModel(savingId, fireCategory)
+        dbRef.child(uid).child("SavingPercentage").child(savingId).setValue(inputSaving).addOnCompleteListener {task ->
+            if (task.isSuccessful) {
+                Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }}.addOnFailureListener { err ->
+            Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
+        }
     }
 }

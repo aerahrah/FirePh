@@ -19,6 +19,7 @@ class ManageActivity : AppCompatActivity() {
     private lateinit var totalAmountText1 : TextView
     private lateinit var textSaving : TextView
     private lateinit var textWarning : TextView
+    private lateinit var textSavingValData : TextView
     private lateinit var textSavingPercentage : TextView
     private lateinit var btnSaveData : Button
     private lateinit var dbRef: DatabaseReference
@@ -40,6 +41,7 @@ class ManageActivity : AppCompatActivity() {
         textWarning = findViewById(R.id.warning)
         textSaving = findViewById(R.id.textSaving)
         textSavingPercentage = findViewById(R.id.textSavingPer)
+        textSavingValData = findViewById(R.id.savingValData)
         getUserDataIncome(date)
         getUserDataExpense(date)
 
@@ -52,7 +54,7 @@ class ManageActivity : AppCompatActivity() {
         val df = DecimalFormat("#.##")
         df.roundingMode = RoundingMode.FLOOR
         return df.format(number).toDouble()
-    }gith
+    }
     private fun getSavingPercentage(amount1: Double, amount2: Double){
         var savingText = 0.0
         var savingTextPercentage = 0.0
@@ -88,11 +90,16 @@ class ManageActivity : AppCompatActivity() {
                                 if (user != null) {
                                     savingdatastr = user.savingValue.toString()
                                     savingdata = savingdatastr.toDouble()
+                                    textSavingValData.setText(savingdata.toString())
                                     if(savingTextPercentage < savingdata){
-                                        System.out.println("hello bitch")
+                                        textWarning.setTextColor(Color.parseColor("#e8590c"))
+                                        textWarning.setText("Warning: Savings are below than expected savings ")
                                     }else{
-                                        System.out.println("greater than saving")
+                                        textWarning.setTextColor(Color.parseColor("#087f5b"))
+                                        textWarning.setText("Greatjob, your savings is beyond your set savings")
                                     }
+                                }else{
+                                    textSavingValData.setText("none")
                                 }
                             }
 
@@ -111,7 +118,6 @@ class ManageActivity : AppCompatActivity() {
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()){
-                        System.out.println("Exist")
                         for (userSnapshot in snapshot.children) {
                             val user = userSnapshot.getValue(Categories::class.java)
                             if (user != null) {
@@ -136,7 +142,6 @@ class ManageActivity : AppCompatActivity() {
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()){
-                        System.out.println("Exist")
                         for (userSnapshot in snapshot.children){
                             val user = userSnapshot.getValue(Categories::class.java)
                             if (user != null) {

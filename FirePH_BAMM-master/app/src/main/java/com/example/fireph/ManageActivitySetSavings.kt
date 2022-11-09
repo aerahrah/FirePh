@@ -97,12 +97,12 @@ class ManageActivitySetSavings : AppCompatActivity() {
                                     dbRef.child(user.savingId.toString()).removeValue()
                                 }
                             }
-                            saveDataPercentage()
+                            saveDataPercentage("Update")
                         }else{
-                            saveDataPercentage()
+                            saveDataPercentage("Update")
                         }
                     }else{
-                        saveDataPercentage()
+                        saveDataPercentage("Set")
                     }
                 }
                 override fun onCancelled(databaseError: DatabaseError) {
@@ -110,7 +110,7 @@ class ManageActivitySetSavings : AppCompatActivity() {
                 }
             })
     }
-    private fun saveDataPercentage(){
+    private fun saveDataPercentage(type: String){
         val fireCategory = item
         val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
@@ -125,8 +125,12 @@ class ManageActivitySetSavings : AppCompatActivity() {
         val savingId = dbRef.push().key!!
         val inputSaving  = savingDataModel(savingId, fireCategory)
         dbRef.child(uid).child("SavingPercentage").child(savingId).setValue(inputSaving).addOnCompleteListener {task ->
-            if (task.isSuccessful) {
-                Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
+            if (task.isSuccessful && type == "Update") {
+                Toast.makeText(this, "Savings percentage updated successfully", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }else if(task.isSuccessful && type == "Set") {
+                Toast.makeText(this, "Savings percentage inserted successfully", Toast.LENGTH_LONG).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }}.addOnFailureListener { err ->

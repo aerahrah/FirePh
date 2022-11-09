@@ -90,7 +90,7 @@ class ManageActivity : AppCompatActivity() {
                                 if (user != null) {
                                     savingdatastr = user.savingValue.toString()
                                     savingdata = savingdatastr.toDouble()
-                                    textSavingValData.setText(savingdata.toString())
+                                    textSavingValData.setText(savingdata.toString()+"%")
                                     if(savingTextPercentage < savingdata){
                                         textWarning.setTextColor(Color.parseColor("#e8590c"))
                                         textWarning.setText("Warning: Savings are below than expected savings ")

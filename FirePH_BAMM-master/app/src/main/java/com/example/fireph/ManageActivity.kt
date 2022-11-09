@@ -18,8 +18,10 @@ class ManageActivity : AppCompatActivity() {
     private lateinit var totalAmountText2 : TextView
     private lateinit var totalAmountText1 : TextView
     private lateinit var textSaving : TextView
+    private lateinit var textWarning : TextView
     private lateinit var textSavingPercentage : TextView
     private lateinit var btnSaveData : Button
+    private lateinit var dbRef: DatabaseReference
     var totalAmount1 = 0.0
     var totalAmount2 = 0.0
 
@@ -35,6 +37,7 @@ class ManageActivity : AppCompatActivity() {
         btnSaveData = findViewById(R.id.btnUpdateSaving)
         totalAmountText2 = findViewById(R.id.textAmount2)
         totalAmountText1 = findViewById(R.id.textAmount1)
+        textWarning = findViewById(R.id.warning)
         textSaving = findViewById(R.id.textSaving)
         textSavingPercentage = findViewById(R.id.textSavingPer)
         getUserDataIncome(date)
@@ -49,7 +52,7 @@ class ManageActivity : AppCompatActivity() {
         val df = DecimalFormat("#.##")
         df.roundingMode = RoundingMode.FLOOR
         return df.format(number).toDouble()
-    }
+    }gith
     private fun getSavingPercentage(amount1: Double, amount2: Double){
         var savingText = 0.0
         var savingTextPercentage = 0.0
@@ -66,6 +69,40 @@ class ManageActivity : AppCompatActivity() {
         }
         textSaving.setText(savingText.toString()+"php")
         textSavingPercentage.setText(savingTextPercentage.toString()+"%")
+        getSavingData(savingTextPercentage)
+    }
+    private fun getSavingData(savingTextPercentage: Double) {
+        val uid = FirebaseAuth.getInstance().currentUser!!.uid
+
+        FirebaseDatabase.getInstance().getReference("Users").child(uid).child("SavingPercentage")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()){
+                        var ct = snapshot.childrenCount.toInt()
+                        var savingdata = 0.0
+                        var savingdatastr = ""
+                        if (ct==1){
+                            dbRef = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("SavingPercentage")
+                            for (userSnapshot in snapshot.children){
+                                val user = userSnapshot.getValue(savingDataModel::class.java)
+                                if (user != null) {
+                                    savingdatastr = user.savingValue.toString()
+                                    savingdata = savingdatastr.toDouble()
+                                    if(savingTextPercentage < savingdata){
+                                        System.out.println("hello bitch")
+                                    }else{
+                                        System.out.println("greater than saving")
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+                override fun onCancelled(databaseError: DatabaseError) {
+                    throw databaseError.toException()
+                }
+            })
     }
     private fun getUserDataIncome(date: String) {
 
@@ -84,7 +121,7 @@ class ManageActivity : AppCompatActivity() {
                             }
                         }
                         totalAmountText1.setText(totalAmount1.toString()+"php")
-                        getSavingPercentage(totalAmount1, totalAmount2)
+
                     }
                 }
                 override fun onCancelled(databaseError: DatabaseError) {

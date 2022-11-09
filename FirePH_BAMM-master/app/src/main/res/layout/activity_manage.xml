@@ -6,6 +6,30 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_weight="1"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="Warning: Savings are below than expected savings "
+        android:textAlignment="center"
+        android:textColor="#e8590c"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/btnUpdateSaving"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSavingPer"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="RtlCompat" />
+
+    <TextView
         android:id="@+id/idTVHead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +49,7 @@
     <TextView
         android:id="@+id/textSavingPer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_weight="1"
         android:fontFamily="sans-serif-condensed"
         android:gravity="center"
@@ -40,13 +64,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@id/textSaving"
-        app:layout_constraintVertical_bias="0.111"
+        app:layout_constraintVertical_bias="0.121"
         tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:layout_weight="1"
@@ -65,7 +89,7 @@
     <TextView
         android:id="@+id/textSaving"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:fontFamily="sans-serif-condensed"
         android:gravity="center"
         android:paddingRight="8dp"
@@ -79,13 +103,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textAmount2"
-        app:layout_constraintVertical_bias="0.52"
+        app:layout_constraintVertical_bias="0.481"
         tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="52dp"
         android:layout_weight="1"
@@ -191,6 +215,7 @@
         android:textColor="#c92a2a"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

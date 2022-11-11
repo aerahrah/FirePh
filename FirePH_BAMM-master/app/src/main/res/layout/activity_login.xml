@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f8f9fa"
+    android:background="#fff"
     android:orientation="vertical"
     android:padding="24dp"
     tools:context=".LoginActivity">
@@ -47,7 +47,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textColor="#343a40" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -62,7 +63,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="#343a40" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -86,6 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Not registered yet"
+                android:textColor="#adb5bd"
                 android:textSize="16sp" />
 
             <TextView
@@ -113,6 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Forgot your password?"
+                android:textColor="#adb5bd"
                 android:textSize="16sp" />
 
             <TextView

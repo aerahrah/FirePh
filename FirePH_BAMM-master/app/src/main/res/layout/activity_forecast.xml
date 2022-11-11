@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    tools:layout_editor_absoluteX= "1dp"
+    tools:layout_editor_absoluteY="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".algorithmActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/foodContainer"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="4dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/foodEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Total Food"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/breadContainer"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/foodContainer">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/breadEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Bread and Cereals"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/riceContainer"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/breadContainer">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/riceEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Rice"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/riceContainer">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Meat Products"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Fish and Marine Products"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi3"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi2">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Fruits"
+                android:inputType="numberDecimal"
+                android:lines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi4"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi3">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Vegetables"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi5"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi4">>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Restaurant and Hotels"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi6"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi5">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Alcoholic Beverages"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi7"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi6"
+            android:maxLength="10">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Tobacco and Vape Products"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi8"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi7">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Clothing, Footwear, and Other Wear"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi9"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi8">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Housing and Water"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi10"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi9">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Medical Care"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi11"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi10">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Transportation"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi12"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi11">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet12"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Communication"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi13"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi12">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet13"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Education"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLength="10"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi14"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi13">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet14"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Miscellaneous"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLength="10"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hi15"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:helperText="required"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi14">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hiet15"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Special Occassions"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLength="10"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Predict"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hi15" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="match_parent"-->
+    <!--    tools:context=".algorithmActivity">-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btnPredict"-->
+    <!--        style="@style/Widget.AppCompat.Button.Colored"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginBottom="16dp"-->
+    <!--        android:layout_marginRight="16dp"-->
+    <!--        android:text="Predict"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintRight_toRightOf="parent"-->
+    <!--        android:layout_marginEnd="16dp" />-->
+
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/recyclerViewPredict"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_marginBottom="0dp"-->
+    <!--        android:layout_marginLeft="0dp"-->
+    <!--        android:layout_marginRight="0dp"-->
+    <!--        android:layout_marginTop="0dp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/btnPredict"-->
+    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--        app:layout_constraintRight_toRightOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--&lt;!&ndash;<?xml version="1.0" encoding="utf-8"?>&ndash;&gt;-->
+    <!--&lt;!&ndash;<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"&ndash;&gt;-->
+    <!--&lt;!&ndash;    xmlns:app="http://schemas.android.com/apk/res-auto"&ndash;&gt;-->
+    <!--&lt;!&ndash;    xmlns:tools="http://schemas.android.com/tools"&ndash;&gt;-->
+    <!--&lt;!&ndash;    android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;    android:layout_height="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;    tools:context=".algorithmActivity"&ndash;&gt;-->
+    <!--&lt;!&ndash;    android:orientation="vertical">&ndash;&gt;-->
+    <!--&lt;!&ndash;    <androidx.recyclerview.widget.RecyclerView&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_weight="0.9"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:id="@+id/my_recycler_view_expenses"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:scrollbars="vertical" />&ndash;&gt;-->
+    <!--&lt;!&ndash;    <LinearLayout&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:background="#A7B4FF"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:padding="5dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:orientation="horizontal">&ndash;&gt;-->
+    <!--&lt;!&ndash;        <LinearLayout&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_weight="1"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:orientation="vertical">&ndash;&gt;-->
+
+    <!--&lt;!&ndash;            <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:id="@+id/submitexpenses"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:paddingLeft="60dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:paddingRight="60dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:text="Predict" />&ndash;&gt;-->
+    <!--&lt;!&ndash;        </LinearLayout>&ndash;&gt;-->
+    <!--&lt;!&ndash;    </LinearLayout>&ndash;&gt;-->
+    <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->

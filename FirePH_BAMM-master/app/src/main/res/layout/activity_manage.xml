@@ -104,7 +104,7 @@
             android:gravity="center"
             android:paddingLeft="4dp"
             android:text="Gathering data, please wait.."
-            android:textAlignment="viewStart"
+            android:textAlignment="textStart"
             android:textColor="#c92a2a"
             android:textSize="18sp"
             android:textStyle="bold"

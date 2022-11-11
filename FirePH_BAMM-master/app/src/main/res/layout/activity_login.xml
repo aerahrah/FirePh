@@ -46,9 +46,13 @@
                 android:id="@+id/etUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#ced4da"
+                android:backgroundTint="#ced4da"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:textColor="#343a40" />
+                android:textColor="#343a40"
+                android:textColorHighlight="#adb5bd"
+                android:textColorHint="#f1f3f5" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -62,9 +66,13 @@
                 android:id="@+id/etLoginPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#ced4da"
+                android:backgroundTint="#ced4da"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:textColor="#343a40" />
+                android:textColor="#343a40"
+                android:textColorHighlight="#adb5bd"
+                android:textColorHint="#adb5bd" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton

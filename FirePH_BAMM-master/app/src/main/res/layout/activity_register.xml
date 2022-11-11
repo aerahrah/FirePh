@@ -14,7 +14,8 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="25dp"
+        app:srcCompat="@drawable/f"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,9 +45,13 @@
                 android:id="@+id/etRegEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#ced4da"
+                android:backgroundTint="#ced4da"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:textColor="#343a40" />
+                android:textColor="#343a40"
+                android:textColorHighlight="#adb5bd"
+                android:textColorHint="#adb5bd" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -60,9 +65,13 @@
                 android:id="@+id/etRegPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#ced4da"
+                android:backgroundTint="#ced4da"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:textColor="#343a40" />
+                android:textColor="#343a40"
+                android:textColorHighlight="#adb5bd"
+                android:textColorHint="#adb5bd" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -86,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Already registered"
-                android:textColor="#343a40"
+                android:textColor="#adb5bd"
                 android:textSize="16sp" />
 
             <TextView

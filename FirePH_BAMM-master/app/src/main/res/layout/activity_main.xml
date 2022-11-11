@@ -66,6 +66,7 @@
         android:layout_height="100dp"
         android:layout_marginTop="40dp"
         android:background="#087f5b"
+        android:clickable="false"
         android:drawableTop="@drawable/ic_baseline_show_chart_24"
         android:paddingTop="8dp"
         android:text="Forecast Expenses"

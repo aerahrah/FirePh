@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnManageData: Button
     private lateinit var btnViewData: Button
     private lateinit var btnReportData: Button
+    private lateinit var btnForecastData: Button
     private lateinit var date: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         btnManageData = findViewById(R.id.btnManageData)
         btnViewData = findViewById(R.id.btnViewTransaction)
         btnReportData = findViewById(R.id.btnReportData)
+        btnForecastData = findViewById(R.id.btnForecastData)
 
 
         btnLogOut = findViewById(R.id.btnLogout)
@@ -80,6 +82,11 @@ class MainActivity : AppCompatActivity() {
                 day.visibility = View.GONE
             }
         }
+        btnForecastData.setOnClickListener {
+            val intent = Intent(this, algorithmActivity::class.java)
+            startActivity(intent)
+        }
+
         btnReportData.setOnClickListener {
             val dialog = datePickerDialog("ReportData")
             dialog.show()

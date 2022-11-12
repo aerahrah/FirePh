@@ -76,7 +76,7 @@ class RegisterActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this@RegisterActivity,
-                        "Registration Error: ",
+                        "Registration Error",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

@@ -51,6 +51,8 @@ class CategoryIncomeAdapter : AppCompatActivity() {
                         }
                         userRecyclerview.adapter = CategoryExpensesAdapter(userArrayList)
                         totalAmountText.setText(totalAmount.toString()+"php")
+                    }else{
+                        totalAmountText.setText(totalAmount.toString()+"php")
                     }
                 }
                 override fun onCancelled(databaseError: DatabaseError) {

@@ -45,24 +45,24 @@
 
             <TextView
                 android:id="@+id/idTVHead2"
-                android:layout_width="340dp"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:gravity="center"
                 android:paddingLeft="45dp"
                 android:text="EXPENSES"
                 android:textAlignment="center"
                 android:textColor="#c92a2a"
-                android:textSize="34sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
 
                 android:id="@+id/buttonIncome"
-                android:layout_width="90dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_weight="1"
                 android:background="@drawable/ic_baseline_keyboard_arrow_right_24"
                 android:backgroundTint="#087f5b"
                 android:textColor="#343a40" />
@@ -101,7 +101,7 @@
                 android:text="Total Amount:"
                 android:textAlignment="viewEnd"
                 android:textColor="#343a40"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 tools:ignore="RtlCompat" />
 
@@ -115,7 +115,7 @@
                 android:text="Gathering data..."
                 android:textAlignment="viewStart"
                 android:textColor="#c92a2a"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 tools:ignore="RtlCompat" />
         </LinearLayout>

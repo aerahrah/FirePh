@@ -16,7 +16,7 @@
         android:gravity="center_horizontal"
         android:text="FORGOT PASSWORD"
         android:textColor="#087f5b"
-        android:textSize="34sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
@@ -41,6 +41,7 @@
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#ced4da"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:textColor="#343a40"

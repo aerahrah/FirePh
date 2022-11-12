@@ -4,23 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="1dp"
+    android:layout_margin="2dp"
     app:cardCornerRadius="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:background="#fff"
         android:backgroundTint="#fff"
         android:orientation="horizontal"
+        android:padding="6dp"
         android:paddingLeft="12dp"
         android:paddingRight="20dp">
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="29dp"
-            android:layout_height="match_parent"
+            android:layout_width="28dp"
+            android:layout_height="22dp"
             android:contentDescription="Legend"
             android:gravity="center"
             app:srcCompat="@drawable/ic_launcher_background"
@@ -28,9 +29,10 @@
 
         <TextView
             android:id="@+id/tvName"
-            android:layout_width="223dp"
-            android:layout_height="43dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="Name"
             android:textAlignment="viewStart"
@@ -40,8 +42,8 @@
 
         <TextView
             android:id="@+id/tvAmount"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:gravity="center"

@@ -82,10 +82,10 @@ class MainActivity : AppCompatActivity() {
                 day.visibility = View.GONE
             }
         }
-//        btnForecastData.setOnClickListener {
-//            val intent = Intent(this, algorithmActivity::class.java)
-//            startActivity(intent)
-//        }
+        btnForecastData.setOnClickListener {
+            val intent = Intent(this, algorithmActivity::class.java)
+            startActivity(intent)
+        }
 
         btnReportData.setOnClickListener {
             val dialog = datePickerDialog("ReportData")

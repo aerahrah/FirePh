@@ -65,6 +65,8 @@ class ViewTransactions : AppCompatActivity() {
                         }
                         userRecyclerview.adapter = MonthlyListAdapter(userArrayList)
                         totalAmountText.setText(totalAmount.toString()+"php")
+                    }else{
+                        totalAmountText.setText(totalAmount.toString()+"php")
                     }
                 }
                 override fun onCancelled(databaseError: DatabaseError) {

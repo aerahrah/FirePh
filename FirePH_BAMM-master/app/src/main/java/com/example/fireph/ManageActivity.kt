@@ -25,6 +25,7 @@ class ManageActivity : AppCompatActivity() {
     private lateinit var dbRef: DatabaseReference
     var totalAmount1 = 0.0
     var totalAmount2 = 0.0
+    var savingTextPercentage = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -45,6 +46,8 @@ class ManageActivity : AppCompatActivity() {
         getUserDataIncome(date)
         getUserDataExpense(date)
 
+        getSavingData(savingTextPercentage)
+
         btnSaveData.setOnClickListener {
             val intent = Intent(this, ManageActivitySetSavings::class.java)
             startActivity(intent)
@@ -57,7 +60,7 @@ class ManageActivity : AppCompatActivity() {
     }
     private fun getSavingPercentage(amount1: Double, amount2: Double){
         var savingText = 0.0
-        var savingTextPercentage = 0.0
+
         savingText = amount1 - amount2
 
         savingTextPercentage = (savingText/amount1)*100
@@ -71,7 +74,7 @@ class ManageActivity : AppCompatActivity() {
         }
         textSaving.setText(savingText.toString()+"php")
         textSavingPercentage.setText(savingTextPercentage.toString()+"%")
-        getSavingData(savingTextPercentage)
+
     }
     private fun getSavingData(savingTextPercentage: Double) {
         val uid = FirebaseAuth.getInstance().currentUser!!.uid
@@ -127,7 +130,8 @@ class ManageActivity : AppCompatActivity() {
                             }
                         }
                         totalAmountText1.setText(totalAmount1.toString()+"php")
-
+                    }else{
+                        totalAmountText1.setText(totalAmount1.toString()+"php")
                     }
                 }
                 override fun onCancelled(databaseError: DatabaseError) {
@@ -151,8 +155,11 @@ class ManageActivity : AppCompatActivity() {
                             }
                         }
                         totalAmountText2.setText(totalAmount2.toString()+"php")
-                        getSavingPercentage(totalAmount1, totalAmount2)
+                    }else{
+                        totalAmountText2.setText(totalAmount2.toString()+"php")
                     }
+
+                    getSavingPercentage(totalAmount1, totalAmount2)
                 }
                 override fun onCancelled(databaseError: DatabaseError) {
                     throw databaseError.toException()
